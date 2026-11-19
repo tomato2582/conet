@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans JP", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  --font-display: "Shippori Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  --font-mono: "IBM Plex Mono", "Source Code Pro", ui-monospace, monospace;
+
+  --color-ink: #1a1612;
+  --color-ink-soft: #2a241e;
+  --color-paper: #f3ebdd;
+  --color-paper-2: #e7dccb;
+  --color-paper-3: #faf6ee;
+  --color-sidebar: #141210;
+  --color-sidebar-2: #221e19;
+  --color-fg: #1a1612;
+  --color-fg-soft: #5e564c;
+  --color-on-dark: #f3ebdd;
+  --color-on-dark-soft: #b7aea2;
+  --color-line: #d8cdb8;
+  --color-line-dark: #3a332c;
+  --color-cinnabar: #c2412d;
+  --color-cinnabar-deep: #8e2e1e;
+  --color-cinnabar-soft: #f6ddd6;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-paper);
+    color: var(--color-fg);
+    line-height: 1.55;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cinnabar);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-cinnabar-soft);
+    color: var(--color-ink);
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  input[type="range"] {
+    accent-color: var(--color-cinnabar);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.pb-safe {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
